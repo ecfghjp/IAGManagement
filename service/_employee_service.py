@@ -36,7 +36,12 @@ def enterNewEmployeeDetails():
 
 @app.route("/iag/employee",methods=['PUT'])
 def updateEmployeeDetails():
-    print(x)
+    try:
+        _employee_repository.updateEmployee(request.json)
+        return jsonify("Updated"),200
+    except Exception as e:
+        return "Not found "+str(e),500
+    
 @app.route("/iag/employee/<empid>",methods=['DELETE'])
 def deleteEmployeeId(empid):
     try:

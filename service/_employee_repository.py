@@ -22,11 +22,13 @@ def createEmployee(employee):
 #delete employees
 def deleteEmployee(aid):
     result = db.delete_one({"aid":aid})
-    print(result)
     return result
+
 #update employees
-
-
+def updateEmployee(employee):
+    emp = [employee_in_db for employee_in_db in db.find()]
+    #newValue =  {"$set":employee }
+    db.update_one(emp,employee)
 
 #retrieve single employee
 def getEmployee(aid):
